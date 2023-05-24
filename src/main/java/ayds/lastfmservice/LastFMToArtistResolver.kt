@@ -1,6 +1,5 @@
-package ayds.lastfmservice.external
+package ayds.lastfmservice
 
-import ayds.lastfmservice.Artist
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 
@@ -14,7 +13,7 @@ private const val ARTIST_BIO = "bio"
 private const val ARTIST_BIO_CONTENT = "content"
 private const val ARTIST_SOURCE = "url"
 
-class JsonToArtistResolver : LastFMToArtistResolver {
+internal class JsonToArtistResolver : LastFMToArtistResolver {
 
     override fun getArtistFromExternalData(serviceData: String?): Artist.LastFMArtist? {
         return serviceData?.getArtist()?.let { item ->
@@ -22,7 +21,6 @@ class JsonToArtistResolver : LastFMToArtistResolver {
                 item.getName(),
                 item.getBioContent(),
                 item.getUrl(),
-                1
             )
         }
     }
@@ -34,18 +32,18 @@ class JsonToArtistResolver : LastFMToArtistResolver {
     }
 
     private fun JsonObject.getBioContent(): String {
-        val artistBio = this[ayds.lastfmservice.external.ARTIST_BIO].asJsonObject
-        val artistBioContent = artistBio[ayds.lastfmservice.external.ARTIST_BIO_CONTENT]
+        val artistBio = this[ARTIST_BIO].asJsonObject
+        val artistBioContent = artistBio[ARTIST_BIO_CONTENT]
         return artistBioContent.asString
     }
 
     private fun JsonObject.getUrl(): String {
-        val artistUrl = this[ayds.lastfmservice.external.ARTIST_SOURCE]
+        val artistUrl = this[ARTIST_SOURCE]
         return artistUrl.asString
     }
 
     private fun JsonObject.getName(): String {
-        val artistName = this[ayds.lastfmservice.external.ARTIST_NAME]
+        val artistName = this[ARTIST_NAME]
         return artistName.asString
     }
 

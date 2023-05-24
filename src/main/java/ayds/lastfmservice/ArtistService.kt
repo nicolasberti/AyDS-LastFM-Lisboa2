@@ -1,13 +1,12 @@
-package ayds.lastfmservice.external
+package ayds.lastfmservice
 
-import ayds.lastfmservice.Artist
 import retrofit2.Response
 
 interface ArtistService {
     fun getArtist(artist: String): Artist.LastFMArtist?
 }
 
-class ArtistServiceImpl(
+internal class ArtistServiceImpl(
     private val lastFMAPI: LastFMAPI,
     private val lastFMToArtistResolver: LastFMToArtistResolver
 ): ArtistService {
