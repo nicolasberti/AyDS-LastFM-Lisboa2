@@ -1,11 +1,11 @@
 package ayds.lastfmservice.external
 
-import ayds.lastfmservice.Artist
+import ayds.lastfmservice.Card
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 
 interface LastFMToArtistResolver {
-    fun getArtistFromExternalData(serviceData: String?): Artist.LastFMArtist?
+    fun getArtistFromExternalData(serviceData: String?): Card.LastFMCard?
 }
 
 private const val JSON_ARTIST = "artist"
@@ -16,9 +16,9 @@ private const val ARTIST_SOURCE = "url"
 
 class JsonToArtistResolver : LastFMToArtistResolver {
 
-    override fun getArtistFromExternalData(serviceData: String?): Artist.LastFMArtist? {
+    override fun getArtistFromExternalData(serviceData: String?): Card.LastFMCard? {
         return serviceData?.getArtist()?.let { item ->
-            Artist.LastFMArtist(
+            Card.LastFMCard(
                 item.getName(),
                 item.getBioContent(),
                 item.getUrl(),

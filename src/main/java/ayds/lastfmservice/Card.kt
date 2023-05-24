@@ -1,14 +1,14 @@
 package ayds.lastfmservice
 
-sealed class Artist {
-    data class LastFMArtist(
+sealed class Card {
+    data class LastFMCard(
         val name: String,
         val info: String,
         val url: String,
         val source: Int,
         var isLocallyStored: Boolean = false
-    ) : Artist()
+    ) : Card()
 
-    object EmptyArtist : Artist()
+    object EmptyCard : Card()
 }
 
