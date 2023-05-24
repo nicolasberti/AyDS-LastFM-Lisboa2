@@ -1,5 +1,10 @@
 # LastFMService (Lisboa2)
 
+Para importar el modulo, se debe estar parado en la carpeta raíz del proyecto y ejecutar el siguiente comando en la consola:
+```
+git submodule add https://github.com/nicolasberti/AyDS-LastFM-Lisboa2 libs/LastFMService
+```
+
 ¿Cómo utilizar el submódulo?
 
 1. Importar el injector y la clase que brinda el servicio.
@@ -26,4 +31,5 @@ La clase LastFMArtist tiene los siguientes atributos:
 name: String -> Nombre del artista
 info: String -> Biografía del artista
 url: String -> URL del artitulo de LastFM sobre el artista
+urlImageLastFM: String -> URL de la imagen de LastFM
 ```
