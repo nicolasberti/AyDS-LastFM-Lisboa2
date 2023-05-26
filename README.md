@@ -5,6 +5,17 @@ Para importar el modulo, se debe estar parado en la carpeta raíz del proyecto y
 git submodule add https://github.com/nicolasberti/AyDS-LastFM-Lisboa2 libs/LastFMService
 ```
 
+Se deben modificar los archivos build.gradle (de la carpeta app) y settings.gradle de la carpeta raíz.
+En el archivo build.gradle se debe agregar esta línea de código en "dependencies"
+```
+implementation project(':LastFMService')
+```
+Mientras que en settings.gradle hay que agregar estas dos líneas
+```
+include ':LastFMService'
+project (':LastFMService').projectDir = new File('libs/LastFMService')
+```
+
 ¿Cómo utilizar el submódulo?
 
 1. Importar el injector y la clase que brinda el servicio.
